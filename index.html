@@ -146,6 +146,44 @@
         ::-webkit-scrollbar-track { background: var(--cream-deep); }
         ::-webkit-scrollbar-thumb { background: var(--stone-line); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: var(--brass-deco); }
+
+        /* ===== 学習ロードマップ（目的別おすすめルート）専用スタイル ===== */
+        /* 「活」マーク同様、ナビゲーション機能そのものを表す真鍮アクセントは装飾ワンポイントとして
+           上辺ボーダーのみに限定使用。個別ルートの色分けは行わず、カテゴリ色と混同させない。 */
+        .route-card {
+            background: #FFFFFF;
+            border: 1px solid var(--stone-line);
+            border-top: 3px solid var(--brass-deco);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+        .route-card:hover {
+            box-shadow: 0 10px 20px -8px rgba(43, 41, 38, 0.14);
+            transform: translateY(-2px);
+        }
+        .route-step-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background-color: var(--cream);
+            border: 1px solid var(--stone-line);
+            padding: 0.4rem 0.8rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            white-space: nowrap;
+            transition: all 0.15s ease;
+        }
+        .route-step-chip:hover {
+            background-color: #FFFFFF;
+            border-color: var(--brass-deco);
+            transform: translateY(-1px);
+        }
+        .route-arrow {
+            color: var(--stone);
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-amber-200 selection:text-amber-900">
@@ -205,6 +243,85 @@
             </div>
             <div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-amber-100/40 blur-2xl pointer-events-none"></div>
         </div>
+
+        <!-- ===== 学習ロードマップ（目的別おすすめルート） ===== -->
+        <section class="mb-8" id="roadmapSection" aria-labelledby="roadmapHeading">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="fa-solid fa-compass-drafting text-[var(--brass-deco)] text-lg"></i>
+                <h2 id="roadmapHeading" data-i18n="roadmap-title" class="font-mincho text-xl sm:text-2xl font-bold text-[var(--ink)]">おすすめの学習ルート</h2>
+            </div>
+            <p data-i18n="roadmap-subtitle" class="text-stone-600 text-sm mb-5 max-w-2xl leading-relaxed">
+                目的に合わせて、取り組む順番を選べます。ステップをタップすると該当アプリが直接開きます。
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <!-- Route 1: 特定技能（介護）合格ルート -->
+                <div class="route-card p-5 rounded-xl">
+                    <p data-i18n="route1-audience" class="font-spectral text-xs uppercase tracking-widest text-stone-400 mb-1">Route 01 ・ 渡日前〜初期学習</p>
+                    <h3 data-i18n="route1-title" class="font-mincho text-base font-bold text-[var(--ink)] mb-2">特定技能（介護）合格ルート</h3>
+                    <p data-i18n="route1-desc" class="text-stone-600 text-xs leading-relaxed mb-4">
+                        語幹と助詞を活字チャンクで固めた上で、CBT模試で本番形式に慣れる王道ルート。
+                    </p>
+                    <div class="flex items-center flex-wrap gap-1.5">
+                        <a href="https://nihongo-no-nekko.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app5-title">にほんごの根っこ活字堂</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://particle-focus.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app6-title">にほんご活字堂 助詞</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://jft-moktest.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app2-title">JFT-Basic CBT 模擬試験</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://nursing-care-skills-exam.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app4-title">Nursing Care Skills Exam</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://kaigo-moshi-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app3-title">介護模試 Lite</span></a>
+                    </div>
+                </div>
+
+                <!-- Route 2: 介護現場・即戦力ルート -->
+                <div class="route-card p-5 rounded-xl">
+                    <p data-i18n="route2-audience" class="font-spectral text-xs uppercase tracking-widest text-stone-400 mb-1">Route 02 ・ 来日直後〜現場勤務</p>
+                    <h3 data-i18n="route2-title" class="font-mincho text-base font-bold text-[var(--ink)] mb-2">介護現場・即戦力ルート</h3>
+                    <p data-i18n="route2-desc" class="text-stone-600 text-xs leading-relaxed mb-4">
+                        挨拶・申し送りの定型句から、利用者への声かけ、記録の定型文作成まで現場直結で鍛える。
+                    </p>
+                    <div class="flex items-center flex-wrap gap-1.5">
+                        <a href="https://edtech-nihongo.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app11-title">EdTech Gabay - サバイバル</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://gabay-koekake.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app8-title">声かけマスター</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://kaigo-kiroku-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app7-title">介護記録 かんたん入力</span></a>
+                    </div>
+                </div>
+
+                <!-- Route 3: 国家試験パート合格ルート -->
+                <div class="route-card p-5 rounded-xl">
+                    <p data-i18n="route3-audience" class="font-spectral text-xs uppercase tracking-widest text-stone-400 mb-1">Route 03 ・ 滞在3年目〜キャリアアップ</p>
+                    <h3 data-i18n="route3-title" class="font-mincho text-base font-bold text-[var(--ink)] mb-2">国家試験パート合格ルート</h3>
+                    <p data-i18n="route3-desc" class="text-stone-600 text-xs leading-relaxed mb-4">
+                        短尺模試で現在地を測り、新制度の弱点パート（A/B/C）を抽出して集中突破する。
+                    </p>
+                    <div class="flex items-center flex-wrap gap-1.5">
+                        <a href="https://kaigo-part-goukaku.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app1-title">介護福祉士 パート合格</span></a>
+                    </div>
+                </div>
+
+                <!-- Route 4: 日常会話・相互理解ルート -->
+                <div class="route-card p-5 rounded-xl">
+                    <p data-i18n="route4-audience" class="font-spectral text-xs uppercase tracking-widest text-stone-400 mb-1">Route 04 ・ 日本人スタッフ / 現地滞在者向け</p>
+                    <h3 data-i18n="route4-title" class="font-mincho text-base font-bold text-[var(--ink)] mb-2">日常会話・相互理解ルート</h3>
+                    <p data-i18n="route4-desc" class="text-stone-600 text-xs leading-relaxed mb-4">
+                        英語の骨格復元からマニラの生きたスラング、現地の食文化まで相互理解を深める。
+                    </p>
+                    <div class="flex items-center flex-wrap gap-1.5">
+                        <a href="https://english-reboot-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app10-title">英語やり直し活字堂</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://tagalog-slang-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app9-title">現代タガログ語 活字堂</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://kusina-balance.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app12-title">Kusina Balance（生活献立帳）</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
         <!-- 検索 & フィルターバー -->
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-4 border-b border-[var(--stone-line)]">
@@ -331,7 +448,7 @@
                 </a>
             </div>
 
-            <!-- ② 語学・学習（Learning / マンゴー）— にほんごの根っこ・助詞ドリルは語学学習コンテンツのためこちらに統一 -->
+            <!-- ② 語学・学習（Learning / マンゴー） -->
             <div class="app-card p-5 rounded-xl flex flex-col justify-between" data-cat="learning" data-keywords="にほんごの根っこ活字堂 語源 語幹 基本語彙 コア学習 nihongo no nekko vocabulary">
                 <div>
                     <div class="flex items-start justify-between gap-2 mb-2">
@@ -606,6 +723,26 @@
 
             'app12-title':{ ja: 'Kusina Balance（生活献立帳）', en: 'Kusina Balance (Meal Planner)' },
             'app12-desc': { ja: 'パコ（Paco）のローカル食材で整える一汁一菜。Keep買い物リストとスムーズに連携。', en: 'Balanced one-soup-one-dish meals built from local Paco ingredients, syncing smoothly with your Keep shopping list.' },
+
+            /* ===== 学習ロードマップ ===== */
+            'roadmap-title':     { ja: 'おすすめの学習ルート', en: 'Recommended Learning Routes' },
+            'roadmap-subtitle':  { ja: '目的に合わせて、取り組む順番を選べます。ステップをタップすると該当アプリが直接開きます。', en: 'Pick the order that matches your goal — tap any step to open that app directly.' },
+
+            'route1-audience': { ja: 'Route 01 ・ 渡日前〜初期学習', en: 'Route 01 · Pre-departure to Early Study' },
+            'route1-title':    { ja: '特定技能（介護）合格ルート', en: 'Specified Skilled Worker (Care) Pass Route' },
+            'route1-desc':     { ja: '語幹と助詞を活字チャンクで固めた上で、CBT模試とライト模試で本番形式に仕上げる王道ルート。', en: 'Build word roots and particles with chunk drills first, then finish with the CBT mock and a light review mock — the standard path.' },
+
+            'route2-audience': { ja: 'Route 02 ・ 来日直後〜現場勤務', en: 'Route 02 · Right After Arrival to On-the-job' },
+            'route2-title':    { ja: '介護現場・即戦力ルート', en: 'Frontline-Ready Care Route' },
+            'route2-desc':     { ja: '挨拶・申し送りの定型句から、利用者への声かけ、記録の定型文作成まで現場直結で鍛える。', en: 'Train directly for the floor — from greeting phrases and handovers to talking with residents and writing records.' },
+
+            'route3-audience': { ja: 'Route 03 ・ 滞在3年目〜キャリアアップ', en: 'Route 03 · Year 3+ · Career Advancement' },
+            'route3-title':    { ja: '国家試験パート合格ルート', en: 'National Exam Part-Pass Route' },
+            'route3-desc':     { ja: '新制度の弱点パート（A/B/C）を抽出し、過去問389問で集中的に演習して合格を目指す。', en: 'Identify the weak parts (A/B/C) of the new exam system and drill them intensively with the 389-question bank.' },
+
+            'route4-audience': { ja: 'Route 04 ・ 日本人スタッフ / 現地滞在者向け', en: 'Route 04 · For Japanese Staff / Local Residents' },
+            'route4-title':    { ja: '日常会話・相互理解ルート', en: 'Everyday Conversation & Understanding Route' },
+            'route4-desc':     { ja: '英語の骨格復元からマニラの生きたスラング、現地の食文化まで相互理解を深める。', en: 'From rebuilding basic English to living Manila slang and local food culture — deepen mutual understanding.' },
         };
 
         let currentLang = 'ja';
