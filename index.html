@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yoshida EdTech Works — 統合ポータル</title>
+    <title>Yoshida EdTech Works | 介護・日本語学習 Webアプリ統合ポータル</title>
+    <meta name="description" content="特定技能（介護）合格・JFT-Basic CBT模試・介護福祉士国家試験パート合格対策から、現場で役立つ日本語・声かけまで。オフライン対応の実用Webツール統合ポータル。">
+    <meta name="keywords" content="特定技能 介護, 介護福祉士 パート合格, JFT-Basic 模試, 介護 日本語, 声かけマスター, 介護記録 アプリ, タガログ語">
+    <link rel="canonical" href="https://yoshida-edtech.vercel.app/">
+
+    <!-- SNS・検索プレビュー用 (OGP) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoshida-edtech.vercel.app/">
+    <meta property="og:title" content="Yoshida EdTech Works | 介護・日本語学習 Webアプリ統合ポータル">
+    <meta property="og:description" content="現場と学びを繋ぐ、実用主義のWebツール群。特定技能介護試験・CBT模試・語学ドリルを1箇所に集約。">
+    <meta property="og:site_name" content="Yoshida EdTech Works">
+    <meta name="twitter:card" content="summary_large_image">
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -20,6 +31,41 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-35R08DWN7L');
+    </script>
+
+    <!-- 構造化データ（JSON-LD）: サイト情報 & 提供アプリ一覧 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://yoshida-edtech.vercel.app/#website",
+          "url": "https://yoshida-edtech.vercel.app/",
+          "name": "Yoshida EdTech Works",
+          "description": "介護資格試験対策、現場日本語指導、語学学習アプリの統合ポータル",
+          "inLanguage": ["ja", "en", "tl"]
+        },
+        {
+          "@type": "ItemList",
+          "name": "提供アプリ一覧",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "介護福祉士 パート合格", "url": "https://kaigo-part-goukaku.vercel.app/" },
+            { "@type": "ListItem", "position": 2, "name": "JFT-Basic CBT 模擬試験", "url": "https://jft-moktest.vercel.app/" },
+            { "@type": "ListItem", "position": 3, "name": "介護模試 Lite", "url": "https://kaigo-moshi-lite.vercel.app/" },
+            { "@type": "ListItem", "position": 4, "name": "Nursing Care Skills Exam", "url": "https://nursing-care-skills-exam.vercel.app/" },
+            { "@type": "ListItem", "position": 5, "name": "にほんごの根っこ活字堂", "url": "https://nihongo-no-nekko.vercel.app/" },
+            { "@type": "ListItem", "position": 6, "name": "にほんご活字堂 助詞", "url": "https://particle-focus.vercel.app/" },
+            { "@type": "ListItem", "position": 7, "name": "介護記録 かんたん入力", "url": "https://kaigo-kiroku-lite.vercel.app/" },
+            { "@type": "ListItem", "position": 8, "name": "声かけマスター", "url": "https://gabay-koekake.vercel.app/" },
+            { "@type": "ListItem", "position": 9, "name": "現代タガログ語 活字堂", "url": "https://tagalog-lab.vercel.app/" },
+            { "@type": "ListItem", "position": 10, "name": "英語やり直し活字堂", "url": "https://english-reboot-lab.vercel.app/" },
+            { "@type": "ListItem", "position": 11, "name": "NIHONGO サバイバル", "url": "https://edtech-nihongo.vercel.app/" },
+            { "@type": "ListItem", "position": 12, "name": "Kusina Balance（生活献立帳）", "url": "https://kusina-balance.vercel.app/" }
+          ]
+        }
+      ]
+    }
     </script>
 
     <style>
