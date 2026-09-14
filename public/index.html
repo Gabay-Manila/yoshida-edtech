@@ -63,7 +63,9 @@
             { "@type": "ListItem", "position": 10, "name": "英語やり直し活字堂", "url": "https://english-reboot-lab.vercel.app/" },
             { "@type": "ListItem", "position": 11, "name": "NIHONGO サバイバル", "url": "https://edtech-nihongo.vercel.app/" },
             { "@type": "ListItem", "position": 12, "name": "Kusina Balance（生活献立帳）", "url": "https://kusina-balance.vercel.app/" },
-            { "@type": "ListItem", "position": 13, "name": "話して書いて伝え合う（介護職エディション）", "url": "https://care-nihongo-pwa.vercel.app/" }
+            { "@type": "ListItem", "position": 13, "name": "話して書いて伝え合う（介護職エディション）", "url": "https://care-nihongo-pwa.vercel.app/" },
+            { "@type": "ListItem", "position": 14, "name": "介護ことば活字堂", "url": "https://kaigo-kotoba-katsujido.vercel.app/" },
+            { "@type": "ListItem", "position": 15, "name": "社会のしくみ活字堂", "url": "https://social-mechanism-katsujido.vercel.app/" }
           ]
         }
       ]
@@ -263,7 +265,7 @@
 
                 <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 font-medium">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span><span id="appCountLive">13</span> <span data-i18n="apps-online">Apps Online</span></span>
+                    <span><span id="appCountLive">15</span> <span data-i18n="apps-online">Apps Online</span></span>
                 </div>
             </div>
         </div>
@@ -340,9 +342,13 @@
                     <p data-i18n="route3-audience" class="font-spectral text-xs uppercase tracking-widest text-stone-400 mb-1">Route 03 ・ 滞在3年目〜キャリアアップ</p>
                     <h3 data-i18n="route3-title" class="font-mincho text-base font-bold text-[var(--ink)] mb-2">国家試験パート合格ルート</h3>
                     <p data-i18n="route3-desc" class="text-stone-600 text-xs leading-relaxed mb-4">
-                        新制度の弱点パート（A/B/C）を抽出し、過去問389問で集中的に演習して合格を目指す。
+                        頻出用語と「社会のしくみ」領域の理解を固めてから、過去問389問のパート別演習で新制度の弱点（A/B/C）を集中的に突破する。
                     </p>
                     <div class="flex items-center flex-wrap gap-1.5">
+                        <a href="https://kaigo-kotoba-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app14-title">介護ことば活字堂</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
+                        <a href="https://social-mechanism-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app15-title">社会のしくみ活字堂</span></a>
+                        <span class="route-arrow" aria-hidden="true">➔</span>
                         <a href="https://kaigo-part-goukaku.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app1-title">介護福祉士 パート合格</span></a>
                     </div>
                 </div>
@@ -371,10 +377,10 @@
 
             <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none" id="categoryTabs">
                 <button onclick="filterCategory('all')" data-target="all" class="tab-btn active tap-target px-3 py-2 text-sm whitespace-nowrap">
-                    <span data-i18n="tab-all">すべて</span> <span class="count-all text-xs px-1.5 py-0.5 rounded-full ml-1" id="count-all">13</span>
+                    <span data-i18n="tab-all">すべて</span> <span class="count-all text-xs px-1.5 py-0.5 rounded-full ml-1" id="count-all">15</span>
                 </button>
                 <button onclick="filterCategory('exam')" data-target="exam" class="tab-btn tap-target px-3 py-2 text-sm whitespace-nowrap">
-                    <i class="fa-solid fa-graduation-cap mr-1 text-[var(--theme-exam)]"></i><span data-i18n="tab-exam">試験対策</span> <span class="count-exam text-xs px-1.5 py-0.5 rounded-full ml-1" id="count-exam">4</span>
+                    <i class="fa-solid fa-graduation-cap mr-1 text-[var(--theme-exam)]"></i><span data-i18n="tab-exam">試験対策</span> <span class="count-exam text-xs px-1.5 py-0.5 rounded-full ml-1" id="count-exam">6</span>
                 </button>
                 <button onclick="filterCategory('care')" data-target="care" class="tab-btn tap-target px-3 py-2 text-sm whitespace-nowrap">
                     <i class="fa-solid fa-hand-holding-heart mr-1 text-[var(--theme-care)]"></i><span data-i18n="tab-care">現場実務</span> <span class="count-care text-xs px-1.5 py-0.5 rounded-full ml-1" id="count-care">2</span>
@@ -698,6 +704,52 @@
                 </a>
             </div>
 
+            <!-- 14. 介護ことば活字堂 -->
+            <div class="app-card p-5 rounded-xl flex flex-col justify-between" data-cat="exam" data-keywords="介護ことば活字堂 用語 国家試験 頻出用語 ルビ 英訳 3択 やさしい日本語 kaigo kotoba vocabulary">
+                <div>
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                        <span class="badge-exam text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1">
+                            <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="tab-exam">試験対策</span>
+                        </span>
+                        <span class="font-spectral text-xs font-medium text-stone-400">Exam / カラマンシー</span>
+                    </div>
+                    <h3 data-i18n="app14-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">介護ことば活字堂</h3>
+                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Kaigo Kotoba Katsujido</p>
+                    <p data-i18n="app14-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
+                        介護福祉士国家試験の頻出用語を、ルビ付き表記・英訳・出題例・3択問題・やさしい日本語解説で徹底攻略する用語特化ドリル。
+                    </p>
+                </div>
+                <a href="https://kaigo-kotoba-katsujido.vercel.app/" target="_blank" rel="noopener"
+                   onclick="playTone(437, 0.15)" data-cat="exam"
+                   class="open-btn tap-target w-full py-2.5 px-4 rounded-lg bg-stone-50 border border-stone-200 text-stone-700 text-sm font-semibold flex items-center justify-between transition-all group">
+                    <span data-i18n="open-app">アプリを開く</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+            </div>
+
+            <!-- 15. 社会のしくみ活字堂 -->
+            <div class="app-card p-5 rounded-xl flex flex-col justify-between" data-cat="exam" data-keywords="社会のしくみ活字堂 介護保険制度 認定 権利擁護 地域包括ケア 成年後見 虐待防止 social mechanism">
+                <div>
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                        <span class="badge-exam text-xs font-semibold px-2.5 py-1 rounded-md flex items-center gap-1">
+                            <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="tab-exam">試験対策</span>
+                        </span>
+                        <span class="font-spectral text-xs font-medium text-stone-400">Exam / カラマンシー</span>
+                    </div>
+                    <h3 data-i18n="app15-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">社会のしくみ活字堂</h3>
+                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Shakai Shikumi Katsujido</p>
+                    <p data-i18n="app15-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
+                        介護保険制度・認定の流れ・権利擁護・地域包括ケアなど「社会のしくみ」領域を全6ユニット62問で整理。ルビ表示切替と英語ワンポイント解説付き。
+                    </p>
+                </div>
+                <a href="https://social-mechanism-katsujido.vercel.app/" target="_blank" rel="noopener"
+                   onclick="playTone(437, 0.15)" data-cat="exam"
+                   class="open-btn tap-target w-full py-2.5 px-4 rounded-lg bg-stone-50 border border-stone-200 text-stone-700 text-sm font-semibold flex items-center justify-between transition-all group">
+                    <span data-i18n="open-app">アプリを開く</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+                </a>
+            </div>
+
         </div>
 
         <div id="noResults" class="hidden text-center py-16">
@@ -784,6 +836,11 @@
             'app13-title':{ ja: '話して書いて伝え合う（介護職エディション）', en: 'Talk, Write & Share (Care Edition)' },
             'app13-desc': { ja: 'N3レベル・全15課。来日後の生活と現場コミュニケーションを想定したトピックを、語彙→会話→文型→作文の4ステップで、話す・書く力まで一気に鍛えます。', en: 'An N3-level, 15-unit course built around life-after-arrival and on-the-job topics. Each unit moves through vocabulary, conversation, sentence patterns, and writing to build real speaking and writing ability.' },
 
+            'app14-title':{ ja: '介護ことば活字堂', en: 'Kaigo Kotoba Katsujido' },
+            'app14-desc': { ja: '介護福祉士国家試験の頻出用語を、ルビ付き表記・英訳・出題例・3択問題・やさしい日本語解説で徹底攻略する用語特化ドリル。', en: 'A vocabulary-focused drill for the Kaigo Fukushishi national exam — key terms with furigana, English translations, sample exam contexts, 3-choice questions, and plain-Japanese explanations.' },
+            'app15-title':{ ja: '社会のしくみ活字堂', en: 'Shakai Shikumi Katsujido' },
+            'app15-desc': { ja: '介護保険制度・認定の流れ・権利擁護・地域包括ケアなど「社会のしくみ」領域を全6ユニット62問で整理。ルビ表示切替と英語ワンポイント解説付き。', en: 'Covers the "how society works" section of the exam — long-term care insurance, certification, advocacy, and community-based care — across 6 units and 62 questions, with a furigana toggle and English one-point tips.' },
+
             /* ===== 学習ロードマップ ===== */
             'roadmap-title':     { ja: 'おすすめの学習ルート', en: 'Recommended Learning Routes' },
             'roadmap-subtitle':  { ja: '目的に合わせて、取り組む順番を選べます。ステップをタップすると該当アプリが直接開きます。', en: 'Pick the order that matches your goal — tap any step to open that app directly.' },
@@ -798,7 +855,7 @@
 
             'route3-audience': { ja: 'Route 03 ・ 滞在3年目〜キャリアアップ', en: 'Route 03 · Year 3+ · Career Advancement' },
             'route3-title':    { ja: '国家試験パート合格ルート', en: 'National Exam Part-Pass Route' },
-            'route3-desc':     { ja: '新制度の弱点パート（A/B/C）を抽出し、過去問389問で集中的に演習して合格を目指す。', en: 'Identify the weak parts (A/B/C) of the new exam system and drill them intensively with the 389-question bank.' },
+            'route3-desc':     { ja: '頻出用語と「社会のしくみ」領域の理解を固めてから、過去問389問のパート別演習で新制度の弱点（A/B/C）を集中的に突破する。', en: 'Build up key terms and understanding of "how society works" first, then drill the weak parts (A/B/C) of the new exam system with the 389-question bank.' },
 
             'route4-audience': { ja: 'Route 04 ・ 日本人スタッフ / 現地滞在者向け', en: 'Route 04 · For Japanese Staff / Local Residents' },
             'route4-title':    { ja: '日常会話・相互理解ルート', en: 'Everyday Conversation & Understanding Route' },
