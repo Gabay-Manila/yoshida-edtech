@@ -232,6 +232,49 @@
             font-size: 0.75rem;
             flex-shrink: 0;
         }
+
+        /* ===== レベルバッジ（N5/N4/N3/A2など） ===== */
+        .level-badge {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.15rem 0.55rem;
+            border-radius: 9999px;
+            background-color: var(--cream-deep);
+            color: var(--ink);
+            border: 1px solid var(--stone-line);
+            letter-spacing: 0.02em;
+        }
+
+        /* ===== 学習ルート進捗チェック（localStorage保存） ===== */
+        .route-step {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .step-check {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.15rem;
+            height: 1.15rem;
+            border: none;
+            background: none;
+            padding: 0;
+            cursor: pointer;
+            color: var(--stone);
+            flex-shrink: 0;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+        .step-check:hover { color: var(--brass-deco); transform: scale(1.1); }
+        .step-check.done { color: #10B981; }
+        .route-step-chip.step-chip-done {
+            opacity: 0.55;
+            text-decoration: line-through;
+            background-color: #ECFDF5;
+            border-color: #A7F3D0;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-amber-200 selection:text-amber-900">
@@ -305,17 +348,17 @@
                         語幹と助詞を活字チャンクで固め、サバイバルフレーズも身につけた上で、CBT模試とライト模試で本番形式に仕上げる王道ルート。
                     </p>
                     <div class="flex items-center flex-wrap gap-1.5">
-                        <a href="https://nihongo-no-nekko.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app5-title">にほんごの根っこ活字堂</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-1" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-1')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://nihongo-no-nekko.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app5-title">にほんごの根っこ活字堂</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://particle-focus.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app6-title">にほんご活字堂 助詞</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-2" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-2')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://particle-focus.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app6-title">にほんご活字堂 助詞</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://edtech-nihongo.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app11-title">NIHONGO サバイバル</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-3" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-3')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://edtech-nihongo.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app11-title">NIHONGO サバイバル</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://jft-moktest.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app2-title">JFT-Basic CBT 模擬試験</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-4" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-4')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://jft-moktest.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app2-title">JFT-Basic CBT 模擬試験</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://nursing-care-skills-exam.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app4-title">Nursing Care Skills Exam</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-5" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-5')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://nursing-care-skills-exam.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app4-title">Nursing Care Skills Exam</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://kaigo-moshi-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app3-title">介護模試 Lite</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route1-6" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route1-6')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://kaigo-moshi-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app3-title">介護模試 Lite</span></a></span>
                     </div>
                 </div>
 
@@ -327,13 +370,13 @@
                         挨拶・申し送りの定型句から、利用者への声かけ、記録の定型文作成まで現場直結で鍛える。
                     </p>
                     <div class="flex items-center flex-wrap gap-1.5">
-                        <a href="https://edtech-nihongo.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app11-title">NIHONGO サバイバル</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route2-1" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route2-1')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://edtech-nihongo.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app11-title">NIHONGO サバイバル</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://gabay-koekake.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app8-title">声かけマスター</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route2-2" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route2-2')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://gabay-koekake.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app8-title">声かけマスター</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://kaigo-kiroku-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app7-title">介護記録 かんたん入力</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route2-3" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route2-3')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://kaigo-kiroku-lite.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app7-title">介護記録 かんたん入力</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://care-nihongo-pwa.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app13-title">話して書いて伝え合う（介護職エディション）</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route2-4" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route2-4')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://care-nihongo-pwa.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app13-title">話して書いて伝え合う（介護職エディション）</span></a></span>
                     </div>
                 </div>
 
@@ -345,11 +388,11 @@
                         頻出用語と「社会のしくみ」領域の理解を固めてから、過去問389問のパート別演習で新制度の弱点（A/B/C）を集中的に突破する。
                     </p>
                     <div class="flex items-center flex-wrap gap-1.5">
-                        <a href="https://kaigo-kotoba-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app14-title">介護ことば活字堂</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route3-1" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route3-1')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://kaigo-kotoba-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app14-title">介護ことば活字堂</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://social-mechanism-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app15-title">社会のしくみ活字堂</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route3-2" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route3-2')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://social-mechanism-katsujido.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app15-title">社会のしくみ活字堂</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://kaigo-part-goukaku.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app1-title">介護福祉士 パート合格</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route3-3" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route3-3')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://kaigo-part-goukaku.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app1-title">介護福祉士 パート合格</span></a></span>
                     </div>
                 </div>
 
@@ -361,11 +404,11 @@
                         英語の骨格復元からマニラの生きたスラング、現地の食文化まで相互理解を深める。
                     </p>
                     <div class="flex items-center flex-wrap gap-1.5">
-                        <a href="https://english-reboot-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app10-title">英語やり直し活字堂</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route4-1" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route4-1')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://english-reboot-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app10-title">英語やり直し活字堂</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://tagalog-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app9-title">現代タガログ語 活字堂</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route4-2" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route4-2')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://tagalog-lab.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app9-title">現代タガログ語 活字堂</span></a></span>
                         <span class="route-arrow" aria-hidden="true">➔</span>
-                        <a href="https://kusina-balance.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app12-title">Kusina Balance（生活献立帳）</span></a>
+                        <span class="route-step"><button type="button" class="step-check" data-step-id="route4-3" aria-label="このステップを完了としてマーク" onclick="toggleStepDone(event, 'route4-3')"><i class="fa-regular fa-circle" aria-hidden="true"></i></button><a href="https://kusina-balance.vercel.app/" target="_blank" rel="noopener" onclick="playTone(437,0.12)" class="route-step-chip tap-target"><span data-i18n="app12-title">Kusina Balance（生活献立帳）</span></a></span>
                     </div>
                 </div>
 
@@ -436,7 +479,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Exam / カラマンシー</span>
                     </div>
                     <h3 data-i18n="app2-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">JFT-Basic CBT 模擬試験</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">JFT-Basic Mock Test</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">JFT-Basic Mock Test</p><span class="level-badge">A2</span></div>
                     <p data-i18n="app2-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         特定技能1号（介護・外食等）取得のためのA2レベルCBT模試。本番同様の操作感で実践力を強化。
                     </p>
@@ -505,7 +548,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Learning / マンゴー</span>
                     </div>
                     <h3 data-i18n="app5-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">にほんごの根っこ活字堂</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Nihongo no Nekko</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Nihongo no Nekko</p><span class="level-badge">N5</span></div>
                     <p data-i18n="app5-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         語源と語幹から日本語の基本語彙を掴むコア学習。言葉の成り立ちを理解し、応用力を鍛えます。
                     </p>
@@ -528,7 +571,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Learning / マンゴー</span>
                     </div>
                     <h3 data-i18n="app6-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">にほんご活字堂 助詞</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Particle Focus</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Particle Focus</p><span class="level-badge">N4</span></div>
                     <p data-i18n="app6-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         「て・に・を・は」の使い分けを活字チャンクで体得するドリル。自然な助詞の感覚をマスター。
                     </p>
@@ -552,7 +595,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Care / ハイビスカス</span>
                     </div>
                     <h3 data-i18n="app7-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">介護記録 かんたん入力</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Kaigo Kiroku Lite</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Kaigo Kiroku Lite</p><span class="level-badge">N3</span></div>
                     <p data-i18n="app7-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         申し送りや介護日誌の頻出フレーズを直感的に組み立てる実務支援。記録業務の負担を軽減。
                     </p>
@@ -575,7 +618,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Care / ハイビスカス</span>
                     </div>
                     <h3 data-i18n="app8-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">声かけマスター</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Communication Master</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Communication Master</p><span class="level-badge">N3</span></div>
                     <p data-i18n="app8-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         利用者の状態やシチュエーションに合わせた適切な声かけと判断力を鍛える速攻演習。
                     </p>
@@ -644,7 +687,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Learning / マンゴー</span>
                     </div>
                     <h3 data-i18n="app11-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">NIHONGO サバイバル</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">NIHONGO Survival</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">NIHONGO Survival</p><span class="level-badge">N5</span></div>
                     <p data-i18n="app11-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         渡日前・来日直後に必要な最重要日本語フレーズを集約。生活現場で役立つサバイバル集。
                     </p>
@@ -691,7 +734,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Learning / マンゴー</span>
                     </div>
                     <h3 data-i18n="app13-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">話して書いて伝え合う（介護職エディション）</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Talk, Write & Share (Care Ed.)</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Talk, Write & Share (Care Ed.)</p><span class="level-badge">N3</span></div>
                     <p data-i18n="app13-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         N3レベル・全15課。来日後の生活と現場コミュニケーションを想定したトピックを、語彙→会話→文型→作文の4ステップで、話す・書く力まで一気に鍛えます。
                     </p>
@@ -714,7 +757,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Exam / カラマンシー</span>
                     </div>
                     <h3 data-i18n="app14-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">介護ことば活字堂</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Kaigo Kotoba Katsujido</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Kaigo Kotoba Katsujido</p><span class="level-badge">N3</span></div>
                     <p data-i18n="app14-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         介護福祉士国家試験の頻出用語を、ルビ付き表記・英訳・出題例・3択問題・やさしい日本語解説で徹底攻略する用語特化ドリル。
                     </p>
@@ -737,7 +780,7 @@
                         <span class="font-spectral text-xs font-medium text-stone-400">Exam / カラマンシー</span>
                     </div>
                     <h3 data-i18n="app15-title" class="font-mincho text-lg font-bold text-[var(--ink)] mb-1">社会のしくみ活字堂</h3>
-                    <p class="font-spectral text-xs text-stone-500 mb-3 italic">Shakai Shikumi Katsujido</p>
+                    <div class="flex items-center gap-2 mb-3"><p class="font-spectral text-xs text-stone-500 italic">Shakai Shikumi Katsujido</p><span class="level-badge">N3</span></div>
                     <p data-i18n="app15-desc" class="text-stone-600 text-sm leading-relaxed mb-4">
                         介護保険制度・認定の流れ・権利擁護・地域包括ケアなど「社会のしくみ」領域を全6ユニット62問で整理。ルビ表示切替と英語ワンポイント解説付き。
                     </p>
@@ -864,6 +907,53 @@
 
         let currentLang = 'ja';
 
+        // ===== 学習ルート進捗チェック（localStorage） =====
+        const PROGRESS_KEY = 'yew_route_progress_v1';
+
+        function loadProgress() {
+            try {
+                return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '{}');
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveProgress(progress) {
+            try {
+                localStorage.setItem(PROGRESS_KEY, JSON.stringify(progress));
+            } catch (e) {
+                console.warn('進捗の保存に失敗しました:', e);
+            }
+        }
+
+        function renderStepState(stepId, done) {
+            const btn = document.querySelector(`.step-check[data-step-id="${stepId}"]`);
+            if (!btn) return;
+            const icon = btn.querySelector('i');
+            const chip = btn.nextElementSibling;
+            btn.classList.toggle('done', !!done);
+            if (icon) icon.className = done ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle';
+            if (chip) chip.classList.toggle('step-chip-done', !!done);
+        }
+
+        function toggleStepDone(event, stepId) {
+            event.preventDefault();
+            event.stopPropagation();
+            const progress = loadProgress();
+            progress[stepId] = !progress[stepId];
+            saveProgress(progress);
+            renderStepState(stepId, progress[stepId]);
+            playTone(progress[stepId] ? 660 : 330, 0.1);
+        }
+
+        function initStepStates() {
+            const progress = loadProgress();
+            document.querySelectorAll('.step-check').forEach(btn => {
+                const stepId = btn.dataset.stepId;
+                if (progress[stepId]) renderStepState(stepId, true);
+            });
+        }
+
         function applyLang(lang) {
             currentLang = lang;
             document.documentElement.lang = (lang === 'ja') ? 'ja' : 'en';
@@ -988,6 +1078,7 @@
 
             document.getElementById('soundLabel').dataset.state = 'on';
             applyLang('ja');
+            initStepStates();
         };
     </script>
 </body>
